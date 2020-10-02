@@ -90,6 +90,26 @@ gathering data and testing our multiple different experimental methods.
 At the end, we hope to obtain a feasible model that can be readily 
 utilized. 
 
+<br><br>
+For our algorithm, our dataset will contain Google images and another 
+Kaggle dataset of people with and without masks. We are planning on 
+using PCA and filters for convolutional neural networks. Specifically 
+for unsupervised techniques, we will be using PCA in order to find patterns 
+and regularities. 
+We will then conduct deep learning techniques and object/feature detection 
+through YOLOv3 with Darknet-53, a neural network framework, following 
+convolutional layers. By taking images as input, and passing it through 
+a series of neural networks, we hope to obtain a vector of bounding boxes 
+and class predictions as output. To assist us in doing this, CVAT will be 
+used in order to label masks to allow us to eventually export our result 
+into a YOLOv3 format. The GPU used to conduct and contain this would be 
+Google Colab. Ideally, once we are able to process the images effectively 
+to detect the masks, we would be able to take screenshots in a video to 
+detect continuously.  
+Using binary classification, we will detect the number of people with 0 
+for without a mask and 1 with a mask. Then we will count them to output 
+the two corresponding numbers to identify mask coverage.
+
 <h4>Discussion</h4>
 As of 2020, the COVID-19 pandemic has seen a tremendous impact on 
 individuals worldwide. By developing a model that can successfully 
