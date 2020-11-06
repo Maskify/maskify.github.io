@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>  
+<html lang="en"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <title>Machine Learning Class Project
@@ -8,11 +8,15 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-<!-- Le styles -->  
+<!-- Le styles -->
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-2018.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link href="css/bootstrap.css" rel="stylesheet">
 <style>
-body {
-padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+.texts {
+width: 45em;
+margin-left: auto;
+margin-right: auto;
 }
 .vis {
 color: #3366CC;
@@ -20,8 +24,43 @@ color: #3366CC;
 .data {
 color: #FF9900;
 }
+.headings{
+  margin = 0;
+
+}
+code {
+  font-family: Consolas,"courier new";
+  color: crimson;
+  background-color: #f1f1f1;
+  padding: 2px;
+  margin:0;
+  font-size: 105%;
+}
+.w3-myfont {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  text-align:center;
+  font-size: 55px;
+  font-weight: normal;
+}
+body{
+  font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
+  font-size: 105%;
+  line-height: 1.5;
+  color:#373737;
+}
+h3{
+  font-weight: normal;
+  font-size:30px;
+}
+h2{
+  text-align: center;
+}
+h4{
+  font-size: 21px;
+  font-weight: normal;
+}
 </style>
-  
+
 <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements --><!--[if lt IE 9]>
@@ -29,135 +68,314 @@ color: #FF9900;
 <![endif]-->
 </head>
 
-<body>
+<body class="w3-container w3-light-gray"; style ="margin:0;padding:0;">
+  <!-- Title and Name -->
+  <div class="w3-panel w3-2018-quetzal-green w3-card-2"; style ="margin:0; padding-top:20px;">
+  <h1 class = "w3-myfont";>MASKIFY</h1>
+  <span style="display: block;text-align:center; font-size: 16px; line-height: 3em;">Nina Chen, Sabrina Chua, Siyu Li, Yuhe Chen</span><br>
+  <span style="display: block;text-align:center; font-size: 13px; line-height: 0em;">Fall 2020 CS 4641 Machine Learning: Class Project</span><br>
+  <span style="display: block;text-align:center; font-size: 13px; line-height: 1.5em;">Georgia Tech</span>
+  <hr>
+  </div>
 <div class="container">
+
 <div class="page-header">
 
-<!-- Title and Name --> 
-<h1>Maskify</h1> 
-<span style="font-size: 20px; line-height: 1.5em;"><strong>Nina Chen, Sabrina Chua, Siyu Li, Yuhe Chen</strong></span><br>
-<span style="font-size: 18px; line-height: 1.5em;">Fall 2020 CS 4641 Machine Learning: Class Project</span><br>
-<span style="font-size: 18px; line-height: 1.5em;">Georgia Tech</span>
-<hr>
+
 
 <!-- Project Proposal -->
-<h3>Project Proposal</h3>
-<h4>Summary Figure</h4>
+<div class="texts">
+<div>
+<div class="w3-panel w3-teal w3-card-4";>
+  <h2>Project Proposal</h2>
+</div>
+<h3>Summary Figure</h3>
 <div style="text-align: center;">
   <img style="height: 300px;" alt="" src="Maskify_Infographic.png">
+  <p>
+    FIGURE 1: infographic
+  </p>
 </div>
-<h4>Introduction</h4>
-Our objective is to develop an image classification model to detect if an 
-individual in a picture is wearing a mask through the use of convolutional 
-neural networks. In order to perform this, we plan on using feature extraction 
-in combination with other techniques, such as binary classification. 
-Specifically for feature extraction, we plan on extracting a minimal set of 
-features, in this case, masks, from multiple images that contain high 
-amounts of object or scene information from low-level image pixel values. 
-In doing so, we will be able to capture the difference among the object 
-categories involved. Our baseline algorithm will have input images of 
-people wearing masks, classified as 1, and people not wearing masks, 
-classified as 0. 
+<h3>Introduction</h3>
+Our objective is to develop an image classification model to detect if an
+individual in a picture is wearing a mask through the use of convolutional
+neural networks. In order to perform this, we plan on using feature extraction
+in combination with other techniques, such as binary classification.
+Specifically for feature extraction, we plan on extracting a minimal set of
+features, in this case, masks, from multiple images that contain high
+amounts of object or scene information from low-level image pixel values.
+In doing so, we will be able to capture the difference among the object
+categories involved. Our baseline algorithm will have input images of
+people wearing masks, classified as 1, and people not wearing masks,
+classified as 0.
 
 <br><br>
 
-Currently, there is no smart way of monitoring continuous mask wearing 
-in public spaces. Wearing masks is only monitored upon entrance into 
-certain facilities by human, phone, or tablet. Motorola Solutions and 
-other Artificial Intelligence startup companies are in the process of 
-developing face mask recognition surveillance softwares for airlines and 
+Currently, there is no smart way of monitoring continuous mask wearing
+in public spaces. Wearing masks is only monitored upon entrance into
+certain facilities by human, phone, or tablet. Motorola Solutions and
+other Artificial Intelligence startup companies are in the process of
+developing face mask recognition surveillance softwares for airlines and
 cities.
 
-<h4>Methods</h4>
-Our approach monitors mask wearing throughout a continuous time frame, 
-and does not require people to stop for seconds to verify on a certain 
-device that they are wearing masks. It will be able to be implemented on 
+<h3>Methods</h3>
+Our approach monitors mask wearing throughout a continuous time frame,
+and does not require people to stop for seconds to verify on a certain
+device that they are wearing masks. It will be able to be implemented on
 wide scale surveillance systems, including schools and hospitals.
 
 <br><br>
-For this project, in terms of the risks, it could be hard to identify 
-masks including masks that are not single colored or even have features 
-of faces printed on them. The quality of the image would need to be easy 
+For this project, in terms of the risks, it could be hard to identify
+masks including masks that are not single colored or even have features
+of faces printed on them. The quality of the image would need to be easy
 to see to better match the masks.
 
 <br><br>
-In terms of the cost, it will cost a large amount of image space and data 
-processing, but otherwise, the pictures should be free-to-use. 
+In terms of the cost, it will cost a large amount of image space and data
+processing, but otherwise, the pictures should be free-to-use.
 
 <br><br>
-We ideally see ourselves spending the next two months of our project 
-gathering data and testing our multiple different experimental methods. 
-At the end, we hope to obtain a feasible model that can be readily 
-utilized. 
+We ideally see ourselves spending the next two months of our project
+gathering data and testing our multiple different experimental methods.
+At the end, we hope to obtain a feasible model that can be readily
+utilized.
 
 <br><br>
-For our algorithm, our dataset will contain Google images and another 
-Kaggle dataset of people with and without masks. We are planning on 
-using PCA and filters for convolutional neural networks. Specifically 
-for unsupervised techniques, we will be using PCA in order to find patterns 
-and regularities. 
-We will then conduct deep learning techniques and object/feature detection 
-through YOLOv3 with Darknet-53, a neural network framework, following 
-convolutional layers. By taking images as input, and passing it through 
-a series of neural networks, we hope to obtain a vector of bounding boxes 
-and class predictions as output. To assist us in doing this, CVAT will be 
-used in order to label masks to allow us to eventually export our result 
-into a YOLOv3 format. The GPU used to conduct and contain this would be 
-Google Colab. Ideally, once we are able to process the images effectively 
-to detect the masks, we would be able to take screenshots in a video to 
-detect continuously.  
-Using binary classification, we will detect the number of people with 0 
-for without a mask and 1 with a mask. Then we will count them to output 
+For our algorithm, our dataset will contain Google images and another
+Kaggle dataset of people with and without masks. We are planning on
+using PCA and filters for convolutional neural networks. Specifically
+for unsupervised techniques, we will be using PCA in order to find patterns
+and regularities.
+We will then conduct deep learning techniques and object/feature detection
+through YOLOv3 with Darknet-53, a neural network framework, following
+convolutional layers. By taking images as input, and passing it through
+a series of neural networks, we hope to obtain a vector of bounding boxes
+and class predictions as output. To assist us in doing this, CVAT will be
+used in order to label masks to allow us to eventually export our result
+into a YOLOv3 format. The GPU used to conduct and contain this would be
+Google Colab. Ideally, once we are able to process the images effectively
+to detect the masks, we would be able to take screenshots in a video to
+detect continuously.
+Using binary classification, we will detect the number of people with 0
+for without a mask and 1 with a mask. Then we will count them to output
 the two corresponding numbers to identify mask coverage.
 
-<h4>Discussion</h4>
-As of 2020, the COVID-19 pandemic has seen a tremendous impact on 
-individuals worldwide. By developing a model that can successfully 
-identify if individuals are wearing masks, we will be able to assist 
-in minimizing the spread of the virus. Information obtained from this 
-model can be used in areas, such as research and government. 
-For instance, if the CDC wanted to understand the spread of the 
-virus better, they would need to know how well it is being 
-contained-- our research could help shed light into this. 
+<h3>Discussion</h3>
+As of 2020, the COVID-19 pandemic has seen a tremendous impact on
+individuals worldwide. By developing a model that can successfully
+identify if individuals are wearing masks, we will be able to assist
+in minimizing the spread of the virus. Information obtained from this
+model can be used in areas, such as research and government.
+For instance, if the CDC wanted to understand the spread of the
+virus better, they would need to know how well it is being
+contained-- our research could help shed light into this.
 
 <br><br>
-In order to check for success in the mid-term, we would like to have a 
-working model that contains the initial stages of image classification. 
-By the final stage, we want to be able to implement the model and have 
-it output accurate information. 
+In order to check for success in the mid-term, we would like to have a
+working model that contains the initial stages of image classification.
+By the final stage, we want to be able to implement the model and have
+it output accurate information.
+<br><br>
+</div>
 
-  
+
 <!-- Midterm Report -->
-<div class="w3-container w3-teal">
+<div class = "texts">
+<div class="w3-panel w3-teal w3-card-4";>
 <h2>Midterm Report</h2>
 </div>
-<h3>Overview</h3>
+
+<h3>1. Overview</h3>
+
 <div>To briefly recap our project, our objective is to develop an image classification model to detect if an individual in a picture is wearing a mask through the use of convolutional neural networks in YOLOv3 and Darknet. In order to perform this, we plan on using feature extraction in combination with other techniques, such as Principal Component Analysis (PCA). Since this is a classification problem, we decided to use binary classification as we are only predicting one of two classes. The features that we will be extracting are people with masks and people without masks so that we can derive a count of people with masks out of the total people. In our dataset, we may have a few outliers such as people wearing masks that have mouths imprinted or people wearing clear masks. These represent the edge cases where if the model would be able to accurately identify these cases, then this would indicate the accuracy and precision are high.</div>
-<h3>Methods Employed</h3>
-<div class="w3-text-gray"><strong> DATA COLLECTION AND PREPROCESSING </strong></div>
+<br>
+
+<h3>2. Methods Employed</h3>
+<h4 class="w3-text-gray";style="font-size:40;"> DATA COLLECTION AND PREPROCESSING</h4>
 <div>To gather our data, we used Google Images and searched using various keywords, including &ldquo;masks&rdquo; and &ldquo;people&rdquo;. We then used an image downloader extension (Imageye) to extract all of the images at once. Once we finished compiling this, we uploaded the data onto Github, separated, and then cleaned the data into four folders: all compiled raw files, people with masks, people without masks, and groups of people with both masks and no masks. We created a large dataset (approximately 1000 images per folder) as more situations in the training set takes into account that the model may encounter, the better its performance will be. For the cleaning portion, we specifically made sure that all of the images contained in the folders were accurate so that it would not hinder model results. For instance, the people with masks folder did not contain any images of people without masks. The resulting ratio of the amount of images with people with face masks to people without face masks is approximately equal (the approximate ratio is 47:53). Following this, we uploaded the cleaned dataset from Github to Kaggle to allow us to easily import the dataset into Google Colab (Figure 2).
-<div style="text-align: center;"><img style="height: 300px;" src="Maskify_Infographic.png" alt="" /> <strong>FIGURE 2 HERE</strong></div>
-In terms of color, the team decided to normalize RGB color parameters to between 0 and 1 (one result shown in Figure 3). We decided to do this because when training CNN, we plan on multiplying weights and adding biases to the initial inputs in order to cause activations that we will then back-propogate with the gradients to train the model. Therefore, the parameters need to be on the same scale.</div>
-  
+<br><br>
+<div style="text-align: center;"><img style="height: 100px;" src="figure2.png" alt="" /> <p>FIGURE 2: Uploading Dataset from Kaggle onto Google Colab
+</div></p>
+<br><br>
+In terms of color, the team decided to normalize RGB color parameters to between 0 and 1 (one result shown in Figure 3). We decided to do this because when training CNN,
+we plan on multiplying weights and adding biases to the initial inputs in order to cause activations that we will then back-propogate with the gradients to train the model.
+Therefore, the parameters need to be on the same scale.
+<br><br>
+<div style="text-align: center;"><img style="height: 300px;" src="figure3.png" alt="" /> <p>FIGURE 3: Image Normalization on the Color Format</div></p>
+<br><br>
+To ensure the steps were done correctly, we checked the mean and standard deviation values
+of the input along with the minimum and maximum values (Figure 4).
+The results confirmed that the pixel range was between [0, 1].
+<br><br>
+  <pre>
+      <code>
+        print(‘Mean: %.3f,  Standard Deviation: %.3f' % (mean,std))
+        print(‘Min: %.3f,  Max: %.3f' % (pixels.min(), pixels.max()))
+        print(‘Data Type:  %s' % (pixels.dtype())
+        plt.figure()
+        plt.imshow(pixels, interpolation = 'none')
+      </code>
+    </pre>
+    <div style="text-align: center;">
+   <p>FIGURE 4: Checking Output Ranges of Image Pixels</div></p>
+<br><br>
+Diving more into standardization of our data,
+YOLOv3 reshapes images automatically prior to training, so we do not need to normalize
+the shape of data. Darknet helps to resize the images for us so that the CNN works.
+</div>
+<br><br>
+
+
+<h4 class="w3-text-gray">UNSUPERVISED LEARNING - PRINCIPLE COMPONENT ANALYSIS (PCA) </h4>
+<div>
+  For the unsupervised portion, we will be primarily using PCA to perform dimensionality
+  reduction to reduce the number of variables in our modeling data. Specifically in our case,
+  we are applying PCA on our image matrices (composed of people with masks and people without masks)
+  to reduce the dimensionality to a smaller number of principal components.
+  It is important to note that this is a lossy compression since we are discarding
+  some of the information. Therefore, we are aiming to perform PCA while also preserving
+  the most important relationships between the variables observed in the data (people masks or not),
+  by attempting to choose a standardized principal component that keeps the recovered variance at 95% or higher.
+  The resulting components are shown in Figure 5 below.
+<br><br>
+  <div style="text-align: center;"><img style="height: 300px;" src="figure5.png" alt="" /> <p>FIGURE 5: Results of Applying PCA on Images</div></p>
+<br>
+To do this, we first normalized our data before conducting PCA. Normalization is
+important in PCA since it is a variance maximizing exercise.
+It projects our original data and normalizes it to a normal distribution
+onto directions which maximize the variance. This is especially important
+because we later inspect elements, such as recovered variance, to decide which principle component is best.
+<br><br>
+After applying PCA, we assessed how much visual information we retained and visually inspected to see how good the reconstructed images are for different numbers of selected components. Ultimately, we then chose component 20, this is based on a recovered variance of approximately 95%+ (i.e., we saw 0.986, 0.993, 0.997, etc. across multiple images) to minimize loss of information.
+<br><br>
+We suspect that using YOLOv3 with PCA would not only standardize our data and
+speed up processing based off studies showing that PCA with YOLOv3 increased the mean
+average precision (mAP) by 7.3% (Figure 6). Furthermore, using PCA could also reveal representation
+of other numerical measurements of several variables in a space of few dimensions, where our senses can
+perceive relationships that would otherwise remain hidden in higher dimensions.
+<br><br>
+  <div style="text-align: center;"><img style="height: 300px;" src="figure6.png" alt="" /> <p>FIGURE 6: YOLOv3 With and Without PCA</div></p>
+<br>
+While PCA does not eliminate noise, it can reduce noise. Therefore, PCA could potentially denoise our dataset by removing some of the noise that could potentially exist in higher dimensions.
+<br><br>
+
+
+<h4 class="w3-text-gray"> UNSUPERVISED LEARNING - COLOR QUANTIZATION WITH K-MEANS</h4>
+Color quantization is an important technique for image analysis that will allow us to reduce the amount of distinct colors contained within a colored image. For our approach, we developed a k-means clustering model to design the optimal color table for color quantization whereby each component within k-means represents a type of color in the palette. These colors are composed of pixels that are grouped into different components. By using this color clustering technique, we hope to produce a subset of colors that capture all the properties of our images. Then, using the small set of colors found by this clustering technique, quantization is applied to produce a simplified image in both color and shape.
+<br><br>
+Color quantization is an important technique for image analysis that will allow us to reduce the amount of distinct colors contained within a colored image. For our approach, we developed a k-means clustering model to design the optimal color table for color quantization whereby each component within k-means represents a type of color in the palette. These colors are composed of pixels that are grouped into different components. By using this color clustering technique, we hope to produce a subset of colors that capture all the properties of our images. Then, using the small set of colors found by this clustering technique, quantization is applied to produce a simplified image in both color and shape.
+<br><br>
+We decided to use an HSV-approach over RBG since we know that HSV separates the Chroma and Luma information of an image (leading to better clustering) Since these values are separated, we will be able to later construct a histogram or thresholding rules using only saturation and hue for deeper analysis. Commonly, when using RGB, it fails to determine the color and intensity variations and often two distinct colors are merged together. The comparisons of both can be observed in the figure below.
+<br><br>
+<div style="text-align: center;"><img style="height: 300px;" src="figure7.png" alt="" /> <p>FIGURE 7: Original Images, Segmentation using HSV Features, Segmentation using RGB Features (from top to bottom) </div></p>
+<br>
+To determine the number of clusters to use, we used the Elbow Method with inertia (Figure 8) on our testing data. As a result, we confirmed that the optimal number of k clusters for the HSV is 4 clusters, which was at the elbow and looked visually the best. At first, we used a clustering of k=20 which visually looked similar to the original image so it was evident that it was not the optimal k. To briefly recap, inertia is the sum of squared distances of samples to their closest cluster center. Ideally, to obtain a good clustering, we would like to have a small value of inertia and number of clusters. Since the value of inertia decreases as the amount of clusters increases, we use the elbow point in the inertia graph to determine the optimal point whereby the change in the value of inertia becomes no longer significant.
+<br><br>
+<div style="text-align: center;"><img style="height: 300px;" src="figure8.png" alt="" /> <p>FIGURE 8: Graph of Inertia in Relation to the Values of K</div></p>
+<br>
+We applied K-means clustering on an HSV scale by first taking in the RBG images, converting them into HSV, quantizing the 1-dimensional Hue space, and converting it back to RGB. More specifically, we computed the k-means clusters for the input image in the hue dimension of the HSV space. We then replaced the hue values with its nearest cluster’s hue value, while simultaneously keeping the saturation and value channels the same as the input. Finally, we converted the quantized image back to the RGB color space.
+<br><br>
+<div style="text-align: center;"><img style="height: 300px;" src="figure9.png" alt="" /> <p>FIGURE 9: Original Image vs Quantized Image</div></p>
+<br>
+<div style="text-align: center;"><img style="height: 300px;" src="figure10.png" alt="" /> <p>FIGURE 10: Original Image (Left) vs. Image with HSV and k = 4 Clusters (Right)</div></p>
+<br>
+To analyze our results, we computed and displayed the histograms of the images’ hue values (example shown below).
+<br><br>
+<div style="text-align: center;"><img style="height: 300px;" src="figure11.png" alt="" /> <p>FIGURE 11: Example of an Image Histogram with k = 4 (Left) and k = 20 (Right) Equal vs Clustered Bins</div></p>
+<br>
+The first histogram uses equally-spaced bins by uniformly dividing up the hue values, while the second histogram uses k cluster center memberships bins. The k clustering has all pixels belonging to one hue cluster grouped into one bin. We can see that using the clustered bins, it is much more consistent and spread out in comparison to the equally separated bins.
+<br><br>
+
+
+
+
+
+<h3>3. Utilizing YOLOv3 </h3>
+<h4 class="w3-text-gray"> YOLOV3 OVERVIEW AND PREPARATION </h4>
+To briefly recap our project, we will be employing YOLOv3, which has a fast speed variant of a popular object detection algorithm YOLO- You Only Look Once. YOLO v3 uses a variant of Darknet, which originally has 53 convolutional layers trained on Imagenet (hence the full name, Darknet-53). For the task of detection, 53 more layers are stacked onto it, giving us a 106 layer fully convolutional underlying architecture for YOLOv3. Also, YOLOv3 now performs multilabel classification for objects detected in images. To expand on convolutional layers, a convolutional neural network is a class of deep neural networks, most commonly applied to analyzing visual images. When programming a CNN, the input is a tensor with shape (number of images) x (image height) x (image width) x (image depth). Then after passing through a convolutional layer, the image becomes abstracted to a feature map, with shape (number of images) x (feature map height) x (feature map width) x (feature map channels). By using YOLOv3 with Darknet-53, we aim to use the 53 layers to identify even objects on a small scale in images.
+<br><br>
+Since YOLOv3 originally has a set of 80 pretrained objects that it can already detect with pretrained weights, one of which is people. We want to use that as a basis and then customize the model to identify if a person is wearing a mask or if a person is not wearing a mask.
+<br><br>
+Once we obtain the weights to the layers of the model, we would like to count the amount of people wearing a mask and the people bounding boxes that it outputs using TensorFlow. We theorize that this would be possible by adding a counter from the class names files containing all the object names for which the model is trained. For example, if the index for a person is 0 in the classes.txt file, we would check if the class predicted is 0 and if it is, we would increment the counter. The sample code we later implement in supervised learning with YOLOv3 can be found below:
+<br><br>
+<pre>
+    <code>
+      count = 0
+      for i in range(nums[0]):
+        if int(classes[0][i] == 0):
+          count += 1
+      print('Number of people with masks:', count)
+    </code>
+  </pre>
+  <div style="text-align: center;"><p>FIGURE 12: Sample of Counter Implemented for Amount of People with Masks in Image</div></p>
+<br>
+
+
+<h4 class="w3-text-gray"> PREPPING DATASET FOR YOLOv3 AND TRAINING SET CREATION</h4>
+We have collected data on both people wearing masks and people not wearing masks, and we will be training the model with parts of those data. Once the model is completed, we will test the model with test data. The results of the test model will be compared with the labeling we already made to calculate a percentage of correctness.
+<br><br>
+To begin YOLOv3, we divided our dataset into: (x_train, y_train) and (x_text, y_test), whereby:
+<pre>
+    <code>
+      x-train = all of our training images
+      y-train = 0, 1 labels for people with masks and without people without masks
+      x-test = smaller subset of the dataset for the testing set to check accuracy of the algorithm
+      y-test = smaller subset of 0, 1 for people with masks and without masks to check accuracy of algorithm
+    </code>
+  </pre>
+  <div style="text-align: center;">
+<p>FIGURE 13: Initializing testing and training images and labels</div></p>
+<br>
+  After creating the appropriate files, in our next steps, we plan on using the testing set to create the bounding boxes for YOLOv3 to obtain a more accurate model. From there, we will begin training YOLOv3.
+<br><br>
+Following this, we created text files for specifying the locations of the dataset to automate and speed up running our model on GoogleColab. We also randomly chose a few images and for each image, we manually created an associated text file to add bounding boxes for the training set. Then, we converted the bounding box annotations to the required YOLO format (convert2Yolo).
+<br><br>
+Bounding boxes is just a simple rectangle that is a point of reference for object detection, which essentially acts as a guideline for the algorithm to look for objects of similar size and shape. By manually creating our own bounding boxes in the training set, YOLOv3 will have a basis to annotate the images and learn to detect where the masks are. With the training data, YOLO uses k-means clustering to cluster the bounding boxes of objects to determine suitable bounding box sizes. YOLO applies a neural network to a full image. It takes an image and divides it into a grid where each cell is responsible for predicting bounding boxes. The YOLO classification layer uses three anchor boxes; thus, at each grid cell, it makes a prediction for each of three bounding boxes based on the three anchor boxes. It can also return the confidence score that indicates how likely the bounding box encloses the correct object.
+<br><br>
+As we continue with our project, we hope to create more bounding boxes for a subset amount of people with and without masks to begin training our model. Since doing it for each image would be very inefficient, we decided to create the boxes accurately for 5% of the total images for the training set to start. If the model converges too slowly and the accuracy is too low, we will add more.
+<br><br>
+
+
+
+
+<h3>4. RESULTS AND CHALLENGES </h3>
+<h4 class="w3-text-gray"> RESULTS </h4>
+In summary, we cleaned and prepared our dataset to begin our unsupervised learning. In order to conduct PCA, we performed color normalization on our images. Afterwards, PCA was applied and we assessed how much visual information was retained-- we ultimately chose a component of 20 since it typically yields a recovered variance of approximately 95% or higher. Conducting PCA not only allows us to denoise some of our data, but also speed up processing later on for YOLOv3 since our dataset is large. Lastly, image quantization was performed to optimize the performance of our model further. To begin our next steps, we separated our dataset into testing and training sets to begin making bounding boxes to implement YOLOv3.
+<br><br>
+
+
+<h4 class="w3-text-gray">CHALLENGES </h4>
+Some minor issues that we have faced so far include the runtime of Google colab’s GPU. We find that since our dataset is so large, that along with YOLOv3, rerunning Colab every time can be very time consuming. This is especially since we have to download the weights of YOLOv3 to train our model. Not only that, GoogleColab refreshes so we have to find a way to not have to manually load it every time; our solution was to use Kaggle, which automatically updates in connection to our GitHub page. Doing so will help mitigate some of this time.
+<br><br>
+Another challenge we faced was finding a way to compress our images small enough, but still be readable and maintain the accuracy of the model. We considered various techniques to apply additional unsupervised learning techniques to our project.
+<br><br>
+Lastly, we attempted k-means clustering and the confusion matrix on our training and testing data set in order to explore more about our model and optimize the algorithm. However, we encountered the problem of our images being different sizes (since they were exported from Google Images), so we had difficulty resizing the images into a standard array for normalization.
+<br><br>
+Proceeding forward, we are continuously expanding our understanding of YOLOv3 and the complexities of Darknet as we begin training our model.
+<br><br>
+
+
+</div>
+</div>
 <h4>References</h4>
   <ul style="font-style: italic;">
     <li>
       https://www.motorolasolutions.com/content/dam/msi/docs/healthresources/face-mask-detection-white-paper.pdf
     </li>
     <li>
-      Rosebrock, Adrian. “COVID-19: Face Mask Detector with OpenCV, Keras/TensorFlow, and Deep Learning.” PyImageSearch, 4 May 2020, www.pyimagesearch.com/2020/05/04/covid-19-face-mask-detector-with-opencv-keras-tensorflow-and-deep-learning/. 
+      Rosebrock, Adrian. “COVID-19: Face Mask Detector with OpenCV, Keras/TensorFlow, and Deep Learning.” PyImageSearch, 4 May 2020, www.pyimagesearch.com/2020/05/04/covid-19-face-mask-detector-with-opencv-keras-tensorflow-and-deep-learning/.
     </li>
     <li>
       Xin, M., Wang, Y. Research on image classification model based on deep convolution neural network. J Image Video Proc. 2019, 40 (2019). https://doi.org/10.1186/s13640-019-0417-8
     </li>
   </ul>
   <hr>
-  <footer> 
+  <footer>
   <p>© Nina Chen, Sabrina Chua, Siyu Li, Yuhe Chen</p>
   </footer>
 </div>
 </div>
-
+</div>
 <br><br>
 
 </body></html>
