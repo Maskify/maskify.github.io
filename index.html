@@ -126,6 +126,19 @@ working model that contains the initial stages of image classification.
 By the final stage, we want to be able to implement the model and have 
 it output accurate information. 
 
+  
+<!-- Midterm Report -->
+<div class="w3-container w3-teal">
+<h2>Midterm Report</h2>
+</div>
+<h3>Overview</h3>
+<div>To briefly recap our project, our objective is to develop an image classification model to detect if an individual in a picture is wearing a mask through the use of convolutional neural networks in YOLOv3 and Darknet. In order to perform this, we plan on using feature extraction in combination with other techniques, such as Principal Component Analysis (PCA). Since this is a classification problem, we decided to use binary classification as we are only predicting one of two classes. The features that we will be extracting are people with masks and people without masks so that we can derive a count of people with masks out of the total people. In our dataset, we may have a few outliers such as people wearing masks that have mouths imprinted or people wearing clear masks. These represent the edge cases where if the model would be able to accurately identify these cases, then this would indicate the accuracy and precision are high.</div>
+<h3>Methods Employed</h3>
+<div class="w3-text-gray"><strong> DATA COLLECTION AND PREPROCESSING </strong></div>
+<div>To gather our data, we used Google Images and searched using various keywords, including &ldquo;masks&rdquo; and &ldquo;people&rdquo;. We then used an image downloader extension (Imageye) to extract all of the images at once. Once we finished compiling this, we uploaded the data onto Github, separated, and then cleaned the data into four folders: all compiled raw files, people with masks, people without masks, and groups of people with both masks and no masks. We created a large dataset (approximately 1000 images per folder) as more situations in the training set takes into account that the model may encounter, the better its performance will be. For the cleaning portion, we specifically made sure that all of the images contained in the folders were accurate so that it would not hinder model results. For instance, the people with masks folder did not contain any images of people without masks. The resulting ratio of the amount of images with people with face masks to people without face masks is approximately equal (the approximate ratio is 47:53). Following this, we uploaded the cleaned dataset from Github to Kaggle to allow us to easily import the dataset into Google Colab (Figure 2).
+<div style="text-align: center;"><img style="height: 300px;" src="Maskify_Infographic.png" alt="" /> <strong>FIGURE 2 HERE</strong></div>
+In terms of color, the team decided to normalize RGB color parameters to between 0 and 1 (one result shown in Figure 3). We decided to do this because when training CNN, we plan on multiplying weights and adding biases to the initial inputs in order to cause activations that we will then back-propogate with the gradients to train the model. Therefore, the parameters need to be on the same scale.</div>
+  
 <h4>References</h4>
   <ul style="font-style: italic;">
     <li>
