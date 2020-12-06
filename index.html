@@ -44,21 +44,21 @@ code {
 }
 body{
   font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
-  font-size: 105%;
+  font-size: 110%;
   line-height: 1.5;
   color:#373737;
   -webkit-font-smoothing: antialiased;
 }
 h3{
   font-weight: normal;
-  font-size:30px;
+  font-size: 30px;
 }
 h2{
   text-align: center;
 }
 h4{
-  font-size: 21px;
-  font-weight: normal;
+  font-size: 23px;
+  font-weight: bold;
 }
 </style>
 
@@ -88,110 +88,36 @@ h4{
 <div class="texts">
 <div>
 <div class="w3-panel w3-teal";>
-  <h2>Project Proposal</h2>
+  <h2>Summary Figure</h2>
 </div>
-<h3>Summary Figure</h3>
 <div style="text-align: center;">
   <img style="height: 300px;" alt="" src="Maskify_Infographic.jpg">
   <p>
     FIGURE 1: infographic
   </p>
 </div>
-<h3>Introduction</h3>
-Our objective is to develop an image classification model to detect if an
-individual in a picture is wearing a mask through the use of convolutional
-neural networks. In order to perform this, we plan on using feature extraction
-in combination with other techniques, such as binary classification.
-Specifically for feature extraction, we plan on extracting a minimal set of
-features, in this case, masks, from multiple images that contain high
-amounts of object or scene information from low-level image pixel values.
-In doing so, we will be able to capture the difference among the object
-categories involved. Our baseline algorithm will have input images of
-people wearing masks, classified as 1, and people not wearing masks,
-classified as 0.
-
-<br><br>
-
-Currently, there is no smart way of monitoring continuous mask wearing
-in public spaces. Wearing masks is only monitored upon entrance into
-certain facilities by human, phone, or tablet. Motorola Solutions and
-other Artificial Intelligence startup companies are in the process of
-developing face mask recognition surveillance softwares for airlines and
-cities.
-
-<h3>Methods</h3>
-Our approach monitors mask wearing throughout a continuous time frame,
-and does not require people to stop for seconds to verify on a certain
-device that they are wearing masks. It will be able to be implemented on
-wide scale surveillance systems, including schools and hospitals.
-
-<br><br>
-For this project, in terms of the risks, it could be hard to identify
-masks including masks that are not single colored or even have features
-of faces printed on them. The quality of the image would need to be easy
-to see to better match the masks.
-
-<br><br>
-In terms of the cost, it will cost a large amount of image space and data
-processing, but otherwise, the pictures should be free-to-use.
-
-<br><br>
-We ideally see ourselves spending the next two months of our project
-gathering data and testing our multiple different experimental methods.
-At the end, we hope to obtain a feasible model that can be readily
-utilized.
-
-<br><br>
-For our algorithm, our dataset will contain Google images and another
-Kaggle dataset of people with and without masks. We are planning on
-using PCA and filters for convolutional neural networks. Specifically
-for unsupervised techniques, we will be using PCA in order to find patterns
-and regularities.
-We will then conduct deep learning techniques and object/feature detection
-through YOLOv3 with Darknet-53, a neural network framework, following
-convolutional layers. By taking images as input, and passing it through
-a series of neural networks, we hope to obtain a vector of bounding boxes
-and class predictions as output. To assist us in doing this, CVAT will be
-used in order to label masks to allow us to eventually export our result
-into a YOLOv3 format. The GPU used to conduct and contain this would be
-Google Colab. Ideally, once we are able to process the images effectively
-to detect the masks, we would be able to take screenshots in a video to
-detect continuously.
-Using binary classification, we will detect the number of people with 0
-for without a mask and 1 with a mask. Then we will count them to output
-the two corresponding numbers to identify mask coverage.
-
-<h3>Discussion</h3>
-As of 2020, the COVID-19 pandemic has seen a tremendous impact on
-individuals worldwide. By developing a model that can successfully
-identify if individuals are wearing masks, we will be able to assist
-in minimizing the spread of the virus. Information obtained from this
-model can be used in areas, such as research and government.
-For instance, if the CDC wanted to understand the spread of the
-virus better, they would need to know how well it is being
-contained-- our research could help shed light into this.
-
-<br><br>
-In order to check for success in the mid-term, we would like to have a
-working model that contains the initial stages of image classification.
-By the final stage, we want to be able to implement the model and have
-it output accurate information.
-<br><br>
-</div>
-
-
-<!-- Midterm Report -->
-<div class = "texts">
+<div class="texts">
+<div>
 <div class="w3-panel w3-teal";>
-<h2>Midterm Report</h2>
+  <h2>Introduction/Background</h2>
+</div>
+For our project, our objective is to develop an image classification model to detect if an individual in a picture is wearing a mask through the use of convolutional neural networks in YOLOv3 and Darknet. In order to perform this, we plan on using feature extraction in combination with other techniques, such as Principal Component Analysis (PCA).
+
+
+<br><br>
+
+Currently, there is no smart way of monitoring continuous mask wearing in public spaces. Wearing masks is only monitored upon entrance into certain facilities by human, phone, or tablet. Motorola Solutions and other Artificial Intelligence startup companies are in the process of developing face mask recognition surveillance softwares for airlines and cities.
+<br><br>
+Since this is a classification problem, we decided to use binary classification as we are only predicting one of two classes. The features that we will be extracting are people with masks and people without masks so that we can derive a count of people with masks out of the total people. In our dataset, we may have a few outliers such as people wearing masks that have mouths imprinted or people wearing clear masks. These represent the edge cases where if the model would be able to accurately identify these cases, then this would indicate if the accuracy and precision are high.
+
+
+<div class="texts">
+<div>
+<div class="w3-panel w3-teal";>
+  <h2>Unsupervised Learning</h2>
 </div>
 
-<h3>1. Overview</h3>
 
-<div>To briefly recap our project, our objective is to develop an image classification model to detect if an individual in a picture is wearing a mask through the use of convolutional neural networks in YOLOv3 and Darknet. In order to perform this, we plan on using feature extraction in combination with other techniques, such as Principal Component Analysis (PCA). Since this is a classification problem, we decided to use binary classification as we are only predicting one of two classes. The features that we will be extracting are people with masks and people without masks so that we can derive a count of people with masks out of the total people. In our dataset, we may have a few outliers such as people wearing masks that have mouths imprinted or people wearing clear masks. These represent the edge cases where if the model would be able to accurately identify these cases, then this would indicate the accuracy and precision are high.</div>
-<br>
-
-<h3>2. Methods Employed</h3>
 <h4 class="w3-text-gray";style="font-size:40;"> DATA COLLECTION AND PREPROCESSING</h4>
 <div>To gather our data, we used Google Images and searched using various keywords, including &ldquo;masks&rdquo; and &ldquo;people&rdquo;. We then used an image downloader extension (Imageye) to extract all of the images at once. Once we finished compiling this, we uploaded the data onto Github, separated, and then cleaned the data into four folders: all compiled raw files, people with masks, people without masks, and groups of people with both masks and no masks. We created a large dataset (approximately 1000 images per folder) as more situations in the training set takes into account that the model may encounter, the better its performance will be. For the cleaning portion, we specifically made sure that all of the images contained in the folders were accurate so that it would not hinder model results. For instance, the people with masks folder did not contain any images of people without masks. The resulting ratio of the amount of images with people with face masks to people without face masks is approximately equal (the approximate ratio is 47:53). Following this, we uploaded the cleaned dataset from Github to Kaggle to allow us to easily import the dataset into Google Colab (Figure 2).
 <br><br>
@@ -287,33 +213,36 @@ To analyze our results, we computed and displayed the histograms of the images�
 The first histogram uses equally-spaced bins by uniformly dividing up the hue values, while the second histogram uses k cluster center memberships bins. The k clustering has all pixels belonging to one hue cluster grouped into one bin. We can see that using the clustered bins, it is much more consistent and spread out in comparison to the equally separated bins.
 <br><br>
 
+<h4 class="w3-text-gray"> UNSUPERVISED RESULTS</h4>
+In summary for our unsupervised, we cleaned and prepared our dataset to begin our unsupervised learning. In order to conduct PCA, we performed color normalization on our images. Afterwards, PCA was applied and we assessed how much visual information was retained-- we ultimately chose a component of 20 since it typically yields a recovered variance of approximately 95% or higher. Conducting PCA not only allows us to denoise some of our data, but also speed up processing later on for YOLOv3 since our dataset is large. This helped speed up processing with YOLO because although there is a higher mAP for higher resolution images, it is much slower to process. Lastly, image quantization was performed to optimize the performance of our model further. Moving into supervised learning, we learned that applying the color quantization with PCA caused the pictures to be too difficult to differentiate the pixels; therefore, the final method we decided to move forward with was to apply the image standardization and compression with PCA. We included our results for the color quantization because if we would like to expand the project further, we could test our model with it or inspire other future projects to use color quantization.
+
+<br><br>
 
 
+<div class="texts">
+<div>
+<div class="w3-panel w3-teal";>
+  <h2>Supervised Learning</h2>
+</div>
 
-
-<h3>3. Utilizing YOLOv3 </h3>
+<h3> Utilizing YOLOv3 </h3>
 <h4 class="w3-text-gray"> YOLOV3 OVERVIEW AND PREPARATION </h4>
-To briefly recap our project, we will be employing YOLOv3, which has a fast speed variant of a popular object detection algorithm YOLO- You Only Look Once. YOLO v3 uses a variant of Darknet, which originally has 53 convolutional layers trained on Imagenet (hence the full name, Darknet-53). For the task of detection, 53 more layers are stacked onto it, giving us a 106 layer fully convolutional underlying architecture for YOLOv3. Also, YOLOv3 now performs multilabel classification for objects detected in images. To expand on convolutional layers, a convolutional neural network is a class of deep neural networks, most commonly applied to analyzing visual images. When programming a CNN, the input is a tensor with shape (number of images) x (image height) x (image width) x (image depth). Then after passing through a convolutional layer, the image becomes abstracted to a feature map, with shape (number of images) x (feature map height) x (feature map width) x (feature map channels). By using YOLOv3 with Darknet-53, we aim to use the 53 layers to identify even objects on a small scale in images.
+<br><br>  <div style="text-align: center;"><img style="height: 300px;" src="figure12.png" alt="" /> <p>FIGURE 12: YOLO V3 Architecture</div></p>
+<br>
+To briefly recap our project, we will be employing YOLOv3, which has a fast speed version of a popular object detection algorithm YOLO- You Only Look Once. YOLO v3 uses a variant of Darknet, which originally has 53 convolutional layers trained on Imagenet (hence the full name, Darknet-53). For the task of detection, 53 more layers are stacked onto it, giving us a 106 layer fully convolutional underlying architecture for YOLOv3. Also, YOLOv3 now performs multilabel classification for objects detected in images. To expand on convolutional layers, a convolutional neural network is a class of deep neural networks, most commonly applied to analyzing visual images. When programming a CNN, the input is a tensor with shape (number of images) x (image height) x (image width) x (image depth). Then after passing through a convolutional layer, the image becomes abstracted to a feature map, with shape (number of images) x (feature map height) x (feature map width) x (feature map channels). By using YOLOv3 with Darknet-53, we aim to use the 53 layers to identify even objects on a small scale in images.
+<br><br>
+In comparison to other object detection algorithms, YOLOv3 was known to be fast and nearly as accurate as Single Shot MultiBox (SSD). In the study “YOLOv3: An Incremental Improvement”, we can see that although the mAP was not the highest among the other methods, it was significantly faster. For the mAP, it was still high enough to be determined as accurate. Therefore, for our use and the limited time we had, we decided to move forward with YOLOv3.
+<br><br>  <div style="text-align: center;"><img style="height: 300px;" src="figure13.png" alt="" /> <p>FIGURE 13: Performance of YOLO V3</div></p>
 <br><br>
 Since YOLOv3 originally has a set of 80 pretrained objects that it can already detect with pretrained weights, one of which is people. We want to use that as a basis and then customize the model to identify if a person is wearing a mask or if a person is not wearing a mask.
 <br><br>
-Once we obtain the weights to the layers of the model, we would like to count the amount of people wearing a mask and the people bounding boxes that it outputs using TensorFlow. We theorize that this would be possible by adding a counter from the class names files containing all the object names for which the model is trained. For example, if the index for a person is 0 in the classes.txt file, we would check if the class predicted is 0 and if it is, we would increment the counter. The sample code we later implement in supervised learning with YOLOv3 can be found below:
-<br><br>
-<pre>
-    <code>
-      count = 0
-      for i in range(nums[0]):
-        if int(classes[0][i] == 0):
-          count += 1
-      print('Number of people with masks:', count)
-    </code>
-  </pre>
-  <div style="text-align: center;"><p>FIGURE 12: Sample of Counter Implemented for Amount of People with Masks in Image</div></p>
+Furthermore, Darknet-53 is used as our feature extractor since the structure utilizes a progression of 3 * 3 and 11 convolutional layers. Compared with other backbones with the same settings (shown below), Darknet-53 performs similarly with other top class classifiers but with fewer floating point operations and faster speed. Additionally, since Darknet-53 achieves the highest measured floating point operations per second, the network structure therefore better utilizes GPU (making it more efficient at evaluating iterations).
+<br><br>  <div style="text-align: center;"><img style="height: 200px;" src="figure14.png" alt="" /> <p>FIGURE 14: 1000-Class Image Net Comparison</div></p>
 <br>
 
 
-<h4 class="w3-text-gray"> PREPPING DATASET FOR YOLOv3 AND TRAINING SET CREATION</h4>
-We have collected data on both people wearing masks and people not wearing masks, and we will be training the model with parts of those data. Once the model is completed, we will test the model with test data. The results of the test model will be compared with the labeling we already made to calculate a percentage of correctness.
+<h4 class="w3-text-gray"> PREPROCESSING  DATASET AND TRAINING SET CREATION</h4>
+To begin our next steps, we separated our dataset into testing and training sets to begin making bounding boxes to implement YOLOv3. We collected data on both people wearing masks and people not wearing masks, and we will be training the model with parts of those data. Once the model is completed, we will test the model with test data. The results of the test model will be compared with the labeling we already made to calculate a percentage of correctness.
 <br><br>
 To begin YOLOv3, we divided our dataset into: (x_train, y_train) and (x_text, y_test), whereby:
 <pre>
@@ -325,35 +254,135 @@ To begin YOLOv3, we divided our dataset into: (x_train, y_train) and (x_text, y_
     </code>
   </pre>
   <div style="text-align: center;">
-<p>FIGURE 13: Initializing testing and training images and labels</div></p>
+<p>FIGURE 15: Initializing testing and training images and labels</div></p>
 <br>
-  After creating the appropriate files, in our next steps, we plan on using the testing set to create the bounding boxes for YOLOv3 to obtain a more accurate model. From there, we will begin training YOLOv3.
-<br><br>
-Following this, we created text files for specifying the locations of the dataset to automate and speed up running our model on GoogleColab. We also randomly chose a few images and for each image, we manually created an associated text file to add bounding boxes for the training set. Then, we converted the bounding box annotations to the required YOLO format (convert2Yolo).
+Following this, we created text files for specifying the locations of the dataset to automate and speed up running our model on GoogleColab. We also randomly chose a few images and for each image, we manually created an associated text file to add bounding boxes for the training set. We created the files of co-bounding boxes around the training data set using labelImg. By using labelImg, the label files we need for YOLOv3 are automatically created in a YOLO-readable format. We did run into issues with labelImg as it was difficult to install which held us back from moving forward. Additionally, we had to manually add the bounding boxes for the testing images which was time consuming. Since doing this for 60% of the image was very inefficient, we decided to create the boxes accurately for 30% of the total images for the training set. After preprocessing our dataset (i.e. creating the label files for each image), both images and their respective label files were to be kept together.
 <br><br>
 Bounding boxes is just a simple rectangle that is a point of reference for object detection, which essentially acts as a guideline for the algorithm to look for objects of similar size and shape. By manually creating our own bounding boxes in the training set, YOLOv3 will have a basis to annotate the images and learn to detect where the masks are. With the training data, YOLO uses k-means clustering to cluster the bounding boxes of objects to determine suitable bounding box sizes. YOLO applies a neural network to a full image. It takes an image and divides it into a grid where each cell is responsible for predicting bounding boxes. The YOLO classification layer uses three anchor boxes; thus, at each grid cell, it makes a prediction for each of three bounding boxes based on the three anchor boxes. It can also return the confidence score that indicates how likely the bounding box encloses the correct object.
 <br><br>
-As we continue with our project, we hope to create more bounding boxes for a subset amount of people with and without masks to begin training our model. Since doing it for each image would be very inefficient, we decided to create the boxes accurately for 5% of the total images for the training set to start. If the model converges too slowly and the accuracy is too low, we will add more.
+Continuing our training preparation, we set up the necessary components to train our model by configuring YOLO with our own dataset. We first compiled our darknet repository and configured the Darknet yolo.cfg containing all of the Darknet CNN parameters. These were used for training configurations which include three yolo layers. We adjusted the number of batches, the number of convolutional kernels there are in a layer, the line filters in the convolutional layers to accommodate for our class size, and the learning rate. This also included editing our obj.names and obj.data file so that we can specify the number of classes as well as the amount of filters.
+<br><br>
+<h4 class="w3-text-gray"> TRAINING THE MODEL</h4>
+Once we finished with the preparation, we moved forward to start training. Given that we had set up our training sets prior, we took this and ran the YOLO training command to see images resulting from data augmentation. Again, it is again important to state that the training was done on Google Colab so that we could utilize Tesla K80 GPU for a faster and more efficient training of the network. One challenge that we ran into was trying to understand the framework of YOLO V3 and applying it to create our own model. There were different compilation and runtime errors such as the bounding boxes being too small or the number of batches being too large. Additionally, running the training was extremely long where it would take up to a day to run.
+<br><br>
+For the training, each object in our dataset was trained for 12,000 iterations (the traditional training method is at least 2,000 iterations for each object so 3(total classes) * 2,000 = 12,000).  We next set the values of the batch and subdivisions to 32 and 8 respectively for optimal training speed. The width and height values were set at 416 for optimum speed and accuracy while the number of filters used in convolution layer were set to 21 as the value is dependent on total number of classes as, filters = (classes + 5)*3.
+<br><br>  <div style="text-align: center;"><img style="height: 200px;" src="figure16.png" alt="" /> <p>FIGURE 16: The code to automatically adjust the necessary .cfg file</div></p>
+In all, the total time required to train the network with the above configurations was approximately 8-10 hours. As such, we were able to generate the weights after the 12,000 iterations finished detections and analyzing the performance. As later mentioned in our challenges, this proved to be a constraint in our model as this was very time consuming (especially given the GPU limits of Google Colab).
+<br><br>
+Once we obtained the weights to the layers of the model, we wanted to count the amount of people wearing a mask and the people bounding boxes that it outputs using TensorFlow. To do so, we added a counter from the class names files containing all the object names for which the model is trained. For example, if the index for a person is 0 in the classes.txt file, we would check if the class predicted is 0 and if it is, we would increment the counter. The sample code we later implemented can be found below:
+<br><br>
+<pre>
+    <code>
+      #!/usr/bin/env python3
+      import fileinput
+      from PIL import Image
+      import os, os.path
+
+      imgs = []
+      path = "/content/darknet/results"
+      valid_text_files = [".txt"]
+      for f in os.listdir(path):
+        ext = os.path.splitext(f)[1]
+        if ext.lower() not in valid_text_files:
+          continue
+
+        mask_count = 0
+        without_mask_count = 0
+        with fileinput.FileInput(path +"/" + f, inplace=False) as file:
+          for line in file:
+            if line[:17] == "people_with_masks":
+              mask_count += 1
+            elif line[:20] == "people_without_masks":
+              without_mask_count += 1
+      print('Number of people with masks:', mask_count)
+      print('Number of people without masks:', without_mask_count)
+    </code>
+  </pre>
+  <div style="text-align: center;"><p>FIGURE 17: Counter Implemented for Amount of People with Masks in Image</div></p>
+Taking the results.txt file from our working model, we implemented a counter for the amount of people with masks and without masks. We adjusted our code to calculate the respective numbers as shown above and were able to output the result for each image.
+<br><br>
+
+
+<h4 class="w3-text-gray">DETERMINING WHEN TO STOP TRAINING</h4>
+As previously mentioned, the traditional method of YOLOv3 recommends that we have at least 2,000 iterations for each class(object). This number should also not be less than the number of training images and not less than 6000 iterations in total. Hence, we ran our model for 12,000 iterations in total.
+<br><br>
+During our training, we also saw varying indicators of error. As such, we also stopped our training when we no longer saw significant decreases in the 0.XXXXXXX avg (average loss error). Theoretically, the lower the average loss, the better the model. Therefore, when the average loss no longer decreased in our many iterations, we stopped our training.
+<br><br>  <div style="text-align: center;"><img style="height: 150px;" src="figure18.png" alt="" /> <p>FIGURE 18: Sample of average loss error in iteration 9002</div></p>
+Next, to prevent the issue of overfitting, we also analyzed the results of our previous weights (1000,2000,..., last weights). Even though we stopped our final model at the last weights, the best result can be given in one of the earlier weights. Overfitting in our case would occur when our model detects objects on images from the training set, but no further images. As such, it is ideal to obtain weights from an earlier stopping point. In our case, we decided that the optimal weight was _______ after comparing the mean accuracy precision scores.
+<br><br>  <div style="text-align: center;"><img style="height: 150px;" src="figure19.png" alt="" /> <p>FIGURE 19: Locating Early Stopping Point in Dataset</div></p>
+
 <br><br>
 
 
 
 
-<h3>4. RESULTS AND CHALLENGES </h3>
-<h4 class="w3-text-gray"> RESULTS </h4>
-In summary, we cleaned and prepared our dataset to begin our unsupervised learning. In order to conduct PCA, we performed color normalization on our images. Afterwards, PCA was applied and we assessed how much visual information was retained-- we ultimately chose a component of 20 since it typically yields a recovered variance of approximately 95% or higher. Conducting PCA not only allows us to denoise some of our data, but also speed up processing later on for YOLOv3 since our dataset is large. Lastly, image quantization was performed to optimize the performance of our model further. To begin our next steps, we separated our dataset into testing and training sets to begin making bounding boxes to implement YOLOv3.
+<div class="texts">
+<div>
+<div class="w3-panel w3-teal";>
+  <h2>RESULTS OF TRAINING</h2>
+</div>
+
+<h4 class="w3-text-gray">OVERVIEW</h4>
+After we concluded our training, we tested our model against some sample pictures to evaluate its performance. We also implemented a counter onto our model to count how many people have masks and have many people who do not in a given image. The sample of some of our results are highlighted below:
+<br><br>  <div style="text-align: center;"><img style="height: 250px;" src="figure20.png" alt="" /> <p>FIGURE 20: Model output of a people without masks and with masks</div></p>
+We later also evaluated the performance of our model with the methods mentioned below.
+
+
+<h4 class="w3-text-gray">CONFUSION MATRIX AND F-1 SCORE</h4>
+
+A confusion matrix was utilized as a summary to give us the prediction results on our classification model. For YOLOv3, the number of correct and incorrect predictions are summarized with counted values and broken down by class. This was crucial to us since it showed the ways in which our model was confused when it makes its predictions. This allows us to gain insight into the errors being made by our classifier as well as the types of errors it is making.
 <br><br>
+We will make People_with_Masks as positive and People_without_Masks as negative. By using the model on the testing set and compare the results, we will be able to get the required parameters for our confusion matrix: True_Positive, False_Positive, True_Negative and False_Negative. Here’s the result that we get:
+
+<br><br>
+<pre>
+    <code>
+      For people with masks (ClassID = 0), TP = 227 and FP = 2.
+      For people without masks (ClassID = 1), TN = 205 and FN = 9.
+    </code>
+  </pre>
+  <div style="text-align: center;"><img style="height: 250px;" src="figure21.png" alt="" /> <p>FIGURE 21: Confusion Matrix</div></p>
+
+<br><br>
+Based on the confusion matrix, we are able to compute F1-score and thus evaluate our accuracy.
+<br><br><pre>
+    <code>
+      F1 = 2TP / (2TP + FP + FN) = 0.9763
+    </code>
+  </pre>
 
 
-<h4 class="w3-text-gray">CHALLENGES </h4>
-Some minor issues that we have faced so far include the runtime of Google colab’s GPU. We find that since our dataset is so large, that along with YOLOv3, rerunning Colab every time can be very time consuming. This is especially since we have to download the weights of YOLOv3 to train our model. Not only that, GoogleColab refreshes so we have to find a way to not have to manually load it every time; our solution was to use Kaggle, which automatically updates in connection to our GitHub page. Doing so will help mitigate some of this time.
+
+
+
+
+<div class="texts">
+<div>
+<div class="w3-panel w3-teal";>
+  <h2>Challenges</h2>
+</div>
+Some minor issues that we have faced include the runtime of Google colab’s GPU. We find that since our dataset is so large, that along with YOLOv3, rerunning Colab every time can be very time consuming. This is especially since we have to download the weights of YOLOv3 to train our model. Not only that, GoogleColab refreshes so we have to find a way to not have to manually load it every time; our solution was to use Kaggle, which automatically updates in connection to our GitHub page. Doing helped mitigate some of this time.
+
 <br><br>
 Another challenge we faced was finding a way to compress our images small enough, but still be readable and maintain the accuracy of the model. We considered various techniques to apply additional unsupervised learning techniques to our project.
 <br><br>
-Lastly, we attempted k-means clustering and the confusion matrix on our training and testing data set in order to explore more about our model and optimize the algorithm. However, we encountered the problem of our images being different sizes (since they were exported from Google Images), so we had difficulty resizing the images into a standard array for normalization.
+Additionally, we attempted k-means clustering and the confusion matrix on our training and testing data set in order to explore more about our model and optimize the algorithm. However, we encountered the problem of our images being different sizes (since they were exported from Google Images), so we had difficulty resizing the images into a standard array for normalization.
 <br><br>
-Proceeding forward, we are continuously expanding our understanding of YOLOv3 and the complexities of Darknet as we begin training our model.
+Moving onto preparation for the YOLO training, we had to manually add the bounding boxes for 30% of the images which was extremely time-consuming and mentally tiring. Ideally, we would have liked to have 60% of the images to be a part of our training set to make our model more accurate. In the future, to expand our model further, we could add more images and their bounding boxes to the training set or look into an alternate method to quickly add these.
 <br><br>
+While we were training our data, we continuously ran into issues with saving the resulting weights of our training. Although we had tested YOLO with a few images and the weights were able to successfully save, the weights would not save properly with our larger training set. We would only discover the issue after the training had run for hours. Additionally, Google Colab had a limited GPU, so we could only run a certain amount each day and run the rest the next.
+After addressing these errors, we were able to successfully train our model.
+
+
+
+
+
+
+
+
+
+
+
 
 
 </div>
@@ -387,5 +416,6 @@ Proceeding forward, we are continuously expanding our understanding of YOLOv3 an
 </div>
 </div>
 <br><br>
+
 
 </body></html>
