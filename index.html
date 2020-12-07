@@ -106,7 +106,7 @@ For our project, our objective is to develop an image classification model to de
 
 <br><br>
 
-Currently, there is no smart way of monitoring continuous mask wearing in public spaces. Wearing masks is only monitored upon entrance into certain facilities by human, phone, or tablet. Motorola Solutions and other Artificial Intelligence startup companies are in the process of developing face mask recognition surveillance softwares for airlines and cities.
+Currently, there is no smart way of monitoring mask wearing in public spaces. Wearing masks is only monitored upon entrance into certain facilities by human, phone, or tablet. Motorola Solutions and other Artificial Intelligence startup companies are in the process of developing face mask recognition surveillance softwares for airlines and cities.
 <br><br>
 Since this is a classification problem, we decided to use binary classification as we are only predicting one of two classes. The features that we will be extracting are people with masks and people without masks so that we can derive a count of people with masks out of the total people. In our dataset, we may have a few outliers such as people wearing masks that have mouths imprinted or people wearing clear masks. These represent the edge cases where if the model would be able to accurately identify these cases, then this would indicate if the accuracy and precision are high.
 
@@ -309,9 +309,9 @@ As previously mentioned, the traditional method of YOLOv3 recommends that we hav
 During our training, we also saw varying indicators of error. As such, we also stopped our training when we no longer saw significant decreases in the average loss error (avg). Theoretically, the lower the average loss, the better the model. Therefore, when the average loss no longer decreased in our many iterations, we stopped our training.
 <br><br>  <div style="text-align: center;"><img style="height: 150px;" src="figure18.png" alt="" /> <p>FIGURE 18: Sample of average loss error in iteration 9002</div></p>
 Next, to prevent the issue of overfitting, we also analyzed the results of our previous weights (1000,2000,..., last weights). Even though we stopped our final model at the last weights, the best result can be given in one of the earlier weights. Overfitting in our case would occur when our model detects objects on images from the training set, but no further images. As such, it is ideal to obtain weights from an earlier stopping point. In our case, we decided that the optimal weight was 4,000 after comparing the mean accuracy precision scores.
-<br><br>  <div style="text-align: center;"><img style="height: 150px;" src="figure19.png" alt="" /> <p>FIGURE 19: Locating Early Stopping Point in Dataset</div></p>
+<br><br>  <div style="text-align: center;"><img style="height: 250px;" src="figure19.png" alt="" /> <p>FIGURE 19: Locating Early Stopping Point in Dataset</div></p>
 We also later output a graph of our loss values as we increased our iterations. In the figure below, we mapped out the iterations to 4,000 since that was where we saw the least amount of loss and most accuracy. As observed, the loss values stayed approximately the same once the model reached 1,000 iterations.
-<br><br>  <div style="text-align: center;"><img style="height: 150px;" src="figure20.png" alt="" /> <p>FIGURE 20: Training Loss chart</div></p>
+<br><br>  <div style="text-align: center;"><img style="height: 250px;" src="figure20.png" alt="" /> <p>FIGURE 20: Training Loss chart</div></p>
 
 
 <br><br>
