@@ -256,7 +256,7 @@ To begin YOLOv3, we divided our dataset into: (x_train, y_train) and (x_text, y_
   <div style="text-align: center;">
 <p>FIGURE 15: Initializing testing and training images and labels</div></p>
 <br>
-Following this, we created text files for specifying the locations of the dataset to automate and speed up running our model on GoogleColab. We also randomly chose a few images and for each image, we manually created an associated text file to add bounding boxes for the training set. We created the files of co-bounding boxes around the training data set using labelImg. By using labelImg, the label files we need for YOLOv3 are automatically created in a YOLO-readable format. We did run into issues with labelImg as it was difficult to install which held us back from moving forward. Additionally, we had to manually add the bounding boxes for the testing images which was time consuming. Since doing this for 60% of the image was very inefficient, we decided to create the boxes accurately for 30% of the total images for the training set. After preprocessing our dataset (i.e. creating the label files for each image), both images and their respective label files were to be kept together.
+Following this, we created text files for specifying the locations of the dataset to automate and speed up running our model on GoogleColab. We also randomly chose a few images and for each image, we manually created an associated text file to add bounding boxes for the training set. We created the files of co-bounding boxes around the training data set using labelImg. By using labelImg, the label files we need for YOLOv3 are automatically created in a YOLO-readable format. For each bounding box, we added a corresponding class label where we set the people_with_mask as 0 and people_without_mask as 1. We did run into issues with labelImg as it was difficult to install which held us back from moving forward. Additionally, we had to manually add the bounding boxes for the testing images which was time consuming. Since doing this for 60% of the image was very inefficient, we decided to create the boxes accurately for 30% of the total images for the training set. After preprocessing our dataset (i.e. creating the label files for each image), both images and their respective label files were to be kept together.
 <br><br>
 Bounding boxes is just a simple rectangle that is a point of reference for object detection, which essentially acts as a guideline for the algorithm to look for objects of similar size and shape. By manually creating our own bounding boxes in the training set, YOLOv3 will have a basis to annotate the images and learn to detect where the masks are. With the training data, YOLO uses k-means clustering to cluster the bounding boxes of objects to determine suitable bounding box sizes. YOLO applies a neural network to a full image. It takes an image and divides it into a grid where each cell is responsible for predicting bounding boxes. The YOLO classification layer uses three anchor boxes; thus, at each grid cell, it makes a prediction for each of three bounding boxes based on the three anchor boxes. It can also return the confidence score that indicates how likely the bounding box encloses the correct object.
 <br><br>
@@ -306,10 +306,13 @@ Taking the results.txt file from our working model, we implemented a counter for
 <h4 class="w3-text-gray">DETERMINING WHEN TO STOP TRAINING</h4>
 As previously mentioned, the traditional method of YOLOv3 recommends that we have at least 2,000 iterations for each class(object). This number should also not be less than the number of training images and not less than 6000 iterations in total. Hence, we ran our model for 12,000 iterations in total.
 <br><br>
-During our training, we also saw varying indicators of error. As such, we also stopped our training when we no longer saw significant decreases in the 0.XXXXXXX avg (average loss error). Theoretically, the lower the average loss, the better the model. Therefore, when the average loss no longer decreased in our many iterations, we stopped our training.
+During our training, we also saw varying indicators of error. As such, we also stopped our training when we no longer saw significant decreases in the average loss error (avg). Theoretically, the lower the average loss, the better the model. Therefore, when the average loss no longer decreased in our many iterations, we stopped our training.
 <br><br>  <div style="text-align: center;"><img style="height: 150px;" src="figure18.png" alt="" /> <p>FIGURE 18: Sample of average loss error in iteration 9002</div></p>
-Next, to prevent the issue of overfitting, we also analyzed the results of our previous weights (1000,2000,..., last weights). Even though we stopped our final model at the last weights, the best result can be given in one of the earlier weights. Overfitting in our case would occur when our model detects objects on images from the training set, but no further images. As such, it is ideal to obtain weights from an earlier stopping point. In our case, we decided that the optimal weight was _______ after comparing the mean accuracy precision scores.
+Next, to prevent the issue of overfitting, we also analyzed the results of our previous weights (1000,2000,..., last weights). Even though we stopped our final model at the last weights, the best result can be given in one of the earlier weights. Overfitting in our case would occur when our model detects objects on images from the training set, but no further images. As such, it is ideal to obtain weights from an earlier stopping point. In our case, we decided that the optimal weight was 4,000 after comparing the mean accuracy precision scores.
 <br><br>  <div style="text-align: center;"><img style="height: 150px;" src="figure19.png" alt="" /> <p>FIGURE 19: Locating Early Stopping Point in Dataset</div></p>
+We also later output a graph of our loss values as we increased our iterations. In the figure below, we mapped out the iterations to 4,000 since that was where we saw the least amount of loss and most accuracy. As observed, the loss values stayed approximately the same once the model reached 1,000 iterations.
+<br><br>  <div style="text-align: center;"><img style="height: 150px;" src="figure20.png" alt="" /> <p>FIGURE 20: Training Loss chart</div></p>
+
 
 <br><br>
 
@@ -324,7 +327,7 @@ Next, to prevent the issue of overfitting, we also analyzed the results of our p
 
 <h4 class="w3-text-gray">OVERVIEW</h4>
 After we concluded our training, we tested our model against some sample pictures to evaluate its performance. We also implemented a counter onto our model to count how many people have masks and have many people who do not in a given image. The sample of some of our results are highlighted below:
-<br><br>  <div style="text-align: center;"><img style="height: 250px;" src="figure20.png" alt="" /> <p>FIGURE 20: Model output of a people without masks and with masks</div></p>
+<br><br>  <div style="text-align: center;"><img style="height: 250px;" src="figure21.png" alt="" /> <p>FIGURE 21: Model output of a people without masks and with masks</div></p>
 We later also evaluated the performance of our model with the methods mentioned below.
 
 
@@ -339,23 +342,59 @@ We will make People_with_Masks as positive and People_without_Masks as negative.
     <code>
       For people with masks (ClassID = 0), TP = 227 and FP = 2.
       For people without masks (ClassID = 1), TN = 205 and FN = 9.
+      Whereby:
+        True positive (TP): A true positive test result is one that detects the condition when the mask is present. Our model was 227.
+        True Negative (TN): A true negative test result is one that does not detect the condition when the mask is absent. Our model was 205.
+        False positive (FP): A false positive test result is one that detects the condition when the mask is absent. Our model was 2.
+        False Negative (FN): A false negative test result is one that does not detect the condition when the mask is present. Our model was 9.
+
     </code>
   </pre>
-  <div style="text-align: center;"><img style="height: 250px;" src="figure21.png" alt="" /> <p>FIGURE 21: Confusion Matrix</div></p>
+  <div style="text-align: center;"><img style="height: 250px;" src="figure22.png" alt="" /> <p>FIGURE 22: Confusion Matrix</div></p>
 
 <br><br>
-Based on the confusion matrix, we are able to compute F1-score and thus evaluate our accuracy.
+Based on the confusion matrix, we are able to compute accuracy, precision and F1-score and thus evaluate our accuracy.
+<br><br> The F1 formula is as follows:
+<div style="text-align: center;"><img style="height: 100px;" src="figure23.png" alt="" /> <p>FIGURE 23: F1 Formula</div></p>
+where TP, FP, FN are numbers of true positives, false positives, and false negatives, respectively.
+<br><br>
+Plugging in the values from our model, we obtain:
+
 <br><br><pre>
     <code>
-      F1 = 2TP / (2TP + FP + FN) = 0.9763
-    </code>
+      Accuracy = (TP + TN) / (P + N) = 0.9752
+      Precision = TP / (TP + FP) = 0.9619
+      F1 = 2TP / (2TP + FP + FN) = 0.9763</code>
   </pre>
+  <br><br>
+  The F1-score has an intuitive meaning that tells us how precise our classifier is, as well as how robust it is. Since F1 takes into calculation both accuracy and precision, if you have very low precision or recall (or both), your F-score drops lower. Since our score is 0.9763, our model has good accuracy and precision, which we also later observe with our mean accuracy precision score.
 
 
+  <h4 class="w3-text-gray">EVALUATING MAP (MEAN ACCURACY PRECISION) SCORE</h4>
+  The MAP metric  is the mean value of average precision for each class, where the average precision is the average value of 11 points on precision-recall curve (PR curve) for each detection. The MAP measures the performance of the model’s information retrieval and object detection abilities.
+  <br><br>
+  The team was able to retrieve the metrics for the model from the following command:
 
+  <br><br><pre>
+      <code>
+        !./darknet detector map data/obj.data cfg/yolov3.cfg /content/weights</code>
+    </pre>
+    <div><p>FIGURE 24: YOLOv3 Model Evaluation Command</div></p>
 
+    <div style="text-align: center;"><img style="height: 250px;" src="figure25.png" alt="" /> <p>FIGURE 25: Model Evaluation Results</div></p>
 
+    The results showed that the accuracy precision of our model for class 0, people_with_masks, is 100% with 227 true positive and 2 false positive detections. For class 1, people_without_masks, the accuracy precision is 99.87% with 205 true positive and 9 false positive detections. The MAP of this model is then calculated to be 99.93% with Intersection Over Union (IoU) of 0.5.  The model has an average IoU of 83.9% meaning the model is true positive overall.
 
+  <div style="text-align: center;"><img style="height: 250px;" src="figure26.png" alt="" /> <p>FIGURE 26: Explanation of the Calculation of IoU</div></p>
+
+  <br><br>
+  To train an object detection model, there are usually two inputs:
+  <li>An image.</li>
+  <li>
+  Ground-truth bounding boxes for each object within the image.</li>
+  <br>
+Since it is difficult to subjectively evaluate the model predictions based on the visualization of the 2 boxes, we use IoU as a quantitative measure to score how the ground-truth and predicted boxes match. In doing so, we know if a region has an object or not (as seen in the figure above). The higher the IoU, the better the prediction. From our model, an IoU score of 0.839 means there is a 83.9% overlap between the ground-truth and predicted bounding boxes which indicates that the model yields reasonably “good predictions”.
+<br>
 <div class="texts">
 <div>
 <div class="w3-panel w3-teal";>
@@ -372,6 +411,8 @@ Moving onto preparation for the YOLO training, we had to manually add the boundi
 <br><br>
 While we were training our data, we continuously ran into issues with saving the resulting weights of our training. Although we had tested YOLO with a few images and the weights were able to successfully save, the weights would not save properly with our larger training set. We would only discover the issue after the training had run for hours. Additionally, Google Colab had a limited GPU, so we could only run a certain amount each day and run the rest the next.
 After addressing these errors, we were able to successfully train our model.
+<br><br>
+In conclusion, we ran into several challenges along the way including time-consuming work and runtime issues; however, we were able to overcome this and created a working mask identification model. In the future, we would recommend implementing this on a server with more GPU and allocating more time for training since that was where most of our issues were. As well, this model could be further expanded with video as YOLOv3 is compatible in detecting objects in a video.
 
 
 
@@ -387,7 +428,8 @@ After addressing these errors, we were able to successfully train our model.
 
 </div>
 </div>
-<h4>References</h4>
+<br><br>
+<h3>References</h3>
   <ul style="font-style: italic;">
     <li>
       https://arxiv.org/pdf/1612.08242.pdf
@@ -399,7 +441,7 @@ After addressing these errors, we were able to successfully train our model.
       https://www.motorolasolutions.com/content/dam/msi/docs/healthresources/face-mask-detection-white-paper.pdf
     </li>
     <li>
-      Redmon, Joseph, and Ali Farhadi. YOLOv3: An Incremental Improvement. pjreddie.com/media/files/papers/YOLOv3.pdf. 
+      Redmon, Joseph, and Ali Farhadi. YOLOv3: An Incremental Improvement. pjreddie.com/media/files/papers/YOLOv3.pdf.
     </li>
     <li>
       Rosebrock, Adrian. “COVID-19: Face Mask Detector with OpenCV, Keras/TensorFlow, and Deep Learning.” PyImageSearch, 4 May 2020, www.pyimagesearch.com/2020/05/04/covid-19-face-mask-detector-with-opencv-keras-tensorflow-and-deep-learning/.
